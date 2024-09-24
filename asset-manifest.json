@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/square-game/static/css/main.4b7bcc96.css",
+    "main.js": "/square-game/static/js/main.73bd5c62.js",
+    "static/js/787.30070e74.chunk.js": "/square-game/static/js/787.30070e74.chunk.js",
+    "static/media/placeholder.jpg": "/square-game/static/media/placeholder.3c0a422b9d39f22e1be7.jpg",
+    "static/media/theme2.png": "/square-game/static/media/theme2.cfb4df12a423d7259957.png",
+    "static/media/theme1.png": "/square-game/static/media/theme1.47beb0f9eb14022dd3ec.png",
+    "static/media/bee.svg": "/square-game/static/media/bee.e2e768c0a06c3bbb709b.svg",
+    "static/media/rocket.svg": "/square-game/static/media/rocket.9d1c0a6baca461a1b74c.svg",
+    "static/media/rocket2.svg": "/square-game/static/media/rocket2.4de75479b6328b118983.svg",
+    "static/media/github.svg": "/square-game/static/media/github.6085d5018633110a2af14a9ebc5bfb43.svg",
+    "static/media/alien.svg": "/square-game/static/media/alien.880f21ac68cf6c7a8299.svg",
+    "index.html": "/square-game/index.html",
+    "static/media/pause.svg": "/square-game/static/media/pause.e7cddae5ff4b5db7219a29d98bce4c3c.svg",
+    "static/media/analytics.svg": "/square-game/static/media/analytics.c306cf5166f8be55cfd6a25e7c9edd03.svg",
+    "static/media/theme.svg": "/square-game/static/media/theme.00f9129c3c29f9b39024d89f0b8be1aa.svg",
+    "static/media/close.svg": "/square-game/static/media/close.d032d7e707e521f3efbc8f282e3deacc.svg",
+    "static/media/playing.svg": "/square-game/static/media/playing.942b15fe94daa52718f6dbf36c913c02.svg",
+    "main.4b7bcc96.css.map": "/square-game/static/css/main.4b7bcc96.css.map",
+    "main.73bd5c62.js.map": "/square-game/static/js/main.73bd5c62.js.map",
+    "787.30070e74.chunk.js.map": "/square-game/static/js/787.30070e74.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4b7bcc96.css",
+    "static/js/main.73bd5c62.js"
+  ]
+}
