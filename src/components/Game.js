@@ -15,8 +15,8 @@ export default function Game(props) {
     const curEmptyInds = useContext(EmptyIndsContext);
     const decayNums = useContext(DecayNumsContext);
 
-    const [whooshAudio] = useState(new Audio("https://github.com/florence-yuan/square-game/blob/gh-pages/sounds/fast-whoosh.mp3?raw=true"))
-    const [ouchAudio] = useState(new Audio("https://github.com/florence-yuan/square-game/blob/gh-pages/sounds/ouch.mp3?raw=true"))
+    const [whooshAudio] = useState(new Audio("https://florence-yuan.github.io/square-game/sounds/fast-whoosh.mp3?raw=true"))
+    const [ouchAudio] = useState(new Audio("https://florence-yuan.github.io/square-game/sounds/ouch.mp3?raw=true"))
 
     const columns = [];
     
@@ -34,7 +34,7 @@ export default function Game(props) {
 
     const gridDrop = useCallback(() => {
         let timeout = setTimeout(() => {
-            const dropAudio = new Audio("https://github.com/florence-yuan/square-game/blob/gh-pages/sounds/thud.mp3?raw=true")
+            const dropAudio = new Audio("https://florence-yuan.github.io/square-game/sounds/thud.mp3?raw=true")
             dropAudio.play();
 
             let newCurGrid = curGrid, col = curCol;

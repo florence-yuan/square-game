@@ -164,7 +164,7 @@ export default function Interface() {
     }, [prefs]);
 
     const [remTime, setRemTime] = useState(prefs.timer);
-    const [endAudio] = useState(new Audio("https://github.com/florence-yuan/square-game/blob/gh-pages/sounds/game-end.mp3?raw=true"));
+    const [endAudio] = useState(new Audio("https://florence-yuan.github.io/square-game/sounds/game-end.mp3?raw=true"));
 
     const [totSteps, setTotSteps] = useState(0);
 

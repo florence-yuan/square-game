@@ -66,7 +66,7 @@ export default function UserSquare({
             return;
         
         if (grid[gridRow][newCol] !== 2) {
-            const squishAudio = new Audio("https://github.com/florence-yuan/square-game/blob/gh-pages/sounds/splat.mp3?raw=true");
+            const squishAudio = new Audio("https://florence-yuan.github.io/square-game/sounds/splat.mp3?raw=true");
             squishAudio.play();
 
             squareApi.start({

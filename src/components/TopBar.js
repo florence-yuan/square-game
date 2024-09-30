@@ -14,7 +14,7 @@ const ICONS = [
         icon: <GithubIcon />,
         handleClick: () => {
             const link = document.createElement("a");
-            link.href = "https://www.google.com/";
+            link.href = "https://github.com/florence-yuan/square-game";
             link.click();
         }
     }
