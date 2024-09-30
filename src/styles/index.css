@@ -1,0 +1,365 @@
+:root {
+	box-sizing: border-box;
+
+	--bg-color: #121212;
+	--empty-border-color: rgb(78, 78, 78);
+
+	--block-bg-color: rgb(103, 67, 231);
+	--block-bg-image: none;
+	--block-transform: scale(0.9);
+
+	--decay-bg-color: rgb(63, 63, 63);
+	--decay-bg-image: none;
+
+	--user-bg-color: rgb(248, 248, 248);
+	--user-bg-image: none;
+
+	--line-color: rgb(63, 63, 63);
+
+	--tool-color: #ddd;
+	--text-color: #ddd;
+	--text-color2: #aaa;
+	--text-color3: rgb(163, 137, 255);
+	--text-color4: rgb(175, 157, 241);
+	--text-color5: rgb(133, 106, 231);
+	--text-alpha1: rgba(142, 108, 255, 0.2);
+	--text-alpha2: rgba(142, 108, 255, 0.6);
+	--text-alpha3: rgba(142, 108, 255, 0.35);
+	--box-shadow: rgba(78, 78, 78, 0.3);
+	--box-shadow2: rgba(149, 130, 216, 0.3);
+
+	--slider-track-color: rgb(82, 82, 82);
+	--slider-thumb-color: rgb(122, 90, 238);
+	--label-bg-color: rgb(59, 59, 59);
+}
+
+.alien-theme {
+	--block-bg-color: none;
+	--block-bg-image: url("../images/alien.svg");
+	--block-transform: none;
+
+	--decay-bg-color: none;
+	--decay-bg-image: url("../images/rocket.svg");
+
+	--user-bg-color: none;
+	--user-bg-image: url("../images/rocket2.svg");
+	
+	--text-color3: rgb(135, 223, 135);
+	--text-color4: rgb(189, 252, 189);
+	--text-color5: rgb(124, 209, 124);
+	--text-alpha1: rgba(107, 221, 107, 0.2);
+	--text-alpha2: rgba(125, 238, 125, 0.6);
+
+	--slider-thumb-color: rgb(135, 223, 135);
+}
+
+.bumble-bee-theme {
+	--block-bg-color: none;
+	--block-bg-image: url("../images/bee.svg");
+	--block-transform: none;
+	color: rgb(206, 185, 90);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700;900&display=swap');
+
+* {
+	box-sizing: inherit;
+	margin: 0;
+	padding: 0;
+	font-size: 10px;
+}
+
+*:focus-visible {
+	outline: none;
+	box-shadow: 0 0 0 2px currentColor;
+}
+
+body {
+	background-color: var(--bg-color);
+	color: var(--text-color);
+    font-family: 'Roboto Mono', monospace;
+}
+
+input, button {
+    font-family: 'Roboto Mono', monospace;
+}
+
+::selection {
+	background-color: rgba(175, 175, 175, 0.24);
+}
+
+article.fullscreen {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	padding: 0 2.5rem;
+	transform: translateX(-50%) translateY(-50%);
+	background-color: var(--bg-color);
+	transition: all 0.2s ease-in-out;
+}
+
+.interface {
+	--side-len: 16;
+	--square-gap: 1rem;
+	--square-side: 2rem;
+	--game-side: calc(var(--side-len) * var(--square-side) + (var(--side-len) - 1) * var(--square-gap));
+
+	position: relative;
+	width: 100vw;
+	height: 100vh;
+	/* padding-top: 3rem; */
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 3rem;
+}
+
+.game-inter {
+	width: var(--game-side);
+}
+
+.pref-inter {
+	width: 90rem;
+	opacity: 0;
+	max-height: 0;
+	/* display: none; */
+	overflow: hidden;
+	transition: all 0.3s ease-in-out;
+	transition-delay: height 0.3s;
+}
+
+body.pref-mode .pref-inter {
+	opacity: 1;
+	max-height: 70rem;
+}
+
+.finish-line {
+	margin-top: -3rem;
+	color: var(--text-color2);
+	text-transform: uppercase;
+	font-size: 1.2rem;
+	width: 100%;
+	text-align: center;
+	padding-bottom: 0.3rem;
+	border-bottom: 1px solid var(--decay-bg-color);
+	margin-bottom: 1rem;
+}
+
+.game__inner {
+	position: relative;
+	width: 100%;
+	height: var(--game-side);
+	display: flex;
+	align-items: flex-end;
+	gap: var(--square-gap);
+	overflow: hidden;
+}
+
+.column {
+	height: 100%;
+}
+
+.column-flex {
+	/* height: 200%;
+	display: flex;
+	flex-direction: column; */
+	/* gap: var(--square-gap); */
+	transition: all 0.3s ease-in-out;
+}
+
+.column-flex .square + .square {
+	margin-top: var(--square-gap)
+}
+
+.square {
+	position: relative;
+	display: block;
+	width: var(--square-side);
+	height: var(--square-side);
+	opacity: 1;
+	/* flex: 1; */
+	transition: all 0.3s ease-in-out;
+}
+
+.square.empty {
+	border: 1px solid var(--empty-border-color);
+}
+
+.square.empty::before,
+.square.decay::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: var(--decay-bg-image);
+	opacity: 0;
+	transition: all 0.3s ease-in-out;
+}
+
+.square.decay::before {
+	opacity: 1;
+}
+
+.square.block {
+	background-color: var(--block-bg-color);
+	transform: var(--block-transform);
+	background-image: var(--block-bg-image);
+	background-size: contain;
+}
+
+.square.decay {
+	background-color: var(--decay-bg-color);
+	border: none;
+}
+
+.square.dead {
+	opacity: 0;
+	margin-top: 0px !important;
+	/* flex: 0; */
+	height: 0px;
+}
+
+.user-square {
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: block;
+	width: var(--square-side);
+	height: var(--square-side);
+	background-color: var(--user-bg-color);
+	background-image: var(--user-bg-image);
+}
+
+.game-notice {
+	width: var(--game-side);
+	background-color: #121212c2 !important;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 3rem;
+	opacity: 0;
+	height: 0;
+	overflow: hidden;
+	backdrop-filter: blur(5px);
+}
+
+body.notice-mode .game-notice {
+	opacity: 1;
+	height: 100vh;
+}
+
+/* Game Startup */
+
+.game-startup {
+	width: var(--game-side);
+	height: 60rem;
+	background-color: #121212c2 !important;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	opacity: 1;
+	overflow: hidden;
+	transition: all 0.2s ease-in-out;
+}
+
+body.game-mode .game-startup {
+	opacity: 0;
+	height: 0;
+	/* display: none; */
+}
+
+.start-flex {
+	display: flex;
+	align-items: center;
+	gap: 1.5rem;
+}
+
+.start-flex > * {
+	transition: all 0.2s ease-in-out;
+}
+
+.start-flex text {
+	font-size: 2.25rem;
+	font-family: 'Poppins', sans-serif;
+	fill: transparent;
+	stroke: var(--label-bg-color);
+}
+
+/* .title-wrapper:hover .start-title {
+	letter-spacing: 0.3rem;
+} */
+
+.title-wrapper:hover .title-base {
+	stroke: var(--text-alpha1);
+	fill: var(--text-alpha1);
+}
+
+.start-flex .start-title {
+	stroke: var(--text-color3);
+	stroke-dasharray: var(--pathLength);
+	stroke-dashoffset: var(--pathLength);
+	animation-name: strokeText;
+	animation-duration: 3s;
+	animation-fill-mode: forwards;
+	user-select: none;
+	cursor: pointer;
+	text-align: center;
+}
+
+.start-flex text {
+	transition: all 0.3s ease-in-out;
+}
+
+.start-flex .start-title:nth-child(3) {
+	--pathLength: 155;
+}
+
+.start-flex .start-title:nth-child(4) {
+	--pathLength: 105;
+}
+
+@keyframes strokeText {
+	from {
+		stroke-dashoffset: var(--pathLength);
+	}
+	to {
+		stroke-dashoffset: 0;
+	}
+}
+
+/* Utility Buttons */
+
+.modal-btn {
+    position: relative;
+    font-size: 1.4rem;
+    appearance: none;
+    padding: 9px 15px 10px;
+    background-color: transparent;
+    font-weight: 500;
+	transition: all 0.2s ease-in-out;
+}
+
+.modal-btn:hover {
+    cursor: pointer;
+	opacity: 0.8;
+}
+
+.modal-btn:active {
+	transform: scale(0.95);
+}
+
+.btn--no-fill {
+    border: 1px solid var(--text-color3);
+    color: var(--text-color3);
+}
+
+.btn--fill {
+    border: none;
+    background-color: var(--text-color3);
+    color: var(--bg-color);
+}

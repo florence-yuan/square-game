@@ -1,0 +1,233 @@
+footer {
+    margin-top: 3rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.tool-bar {
+    display: flex;
+    align-items: center;
+    align-self: flex-start;
+    padding: 0 1em;
+}
+
+.tool-wrapper {
+    position: relative;
+    display: block;
+    width: 2.5rem;
+    height: 2.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.tool-wrapper:hover {
+    transform: scale(1.25);
+}
+
+.tool-wrapper:active {
+    transform: scale(0.9);
+}
+
+.tool-wrapper > * {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.tool {
+    transition: all 0.2s ease-in-out;
+}
+
+.tool-front {
+    opacity: 1;
+}
+
+.tool-back {
+    opacity: 0;
+}
+
+.tool svg {
+    width: 2.5rem;
+    height: 2.5rem;
+    color: var(--tool-color);
+}
+
+#playing-btn svg {
+    width: 4rem;
+    height: 4rem;
+}
+
+/* Preferences List */
+
+.pref-item {
+    color: var(--text-color);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1.3rem;
+    text-align: right;
+}
+
+.pref-item > * {
+    font-size: inherit;
+}
+
+.pref-item span.pref-val {
+    color: var(--text-color3);
+}
+
+.pref-item a {
+    color: var(--text-color3);
+}
+
+.pref-item span.pref-info {
+    color: var(--text-color2);
+}
+
+/* Timer */
+
+.timer {
+    color: var(--text-color);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1.4rem;
+    text-align: right;
+    padding: 1.1em 0.25em;
+}
+
+/* Top bar */
+
+.top-bar {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    top: 3rem;
+    right: calc(1vw + 3rem);
+}
+
+.top__btn {
+    position: relative;
+    width: 3rem;
+    height: 3rem;
+    color: var(--text-color2);
+    transition: all 0.3s ease-in-out;
+}
+
+.top__btn:hover {
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+.top__btn:nth-child(3) {
+    margin-top: -0.1rem;
+    margin-left: 0.1rem;
+    margin-bottom: 0.1rem;
+    width: 2.9rem;
+    height: 2.9rem;
+}
+
+.top__icon {
+    width: 100%;
+    height: 100%;
+}
+
+.top__icon > svg,
+.top__icon > svg > path {
+    width: 100%;
+    height: 100%;
+}
+
+.top__label {
+    width: max-content;
+    position: absolute;
+    top: 3.7rem;
+    left: 50%;
+    font-size: 1.2rem;
+    background-color: var(--decay-bg-color);
+    padding: 0.3rem 0.5rem 0.4rem;
+    border-radius: 6px;
+    pointer-events: none;
+    user-select: none;
+    opacity: 0;
+    transform: translateX(-50%) scale(0.95);
+    transform-origin: top center;
+    transition: all 0.25s ease-in-out;
+}
+
+.top__btn:hover .top__label {
+    pointer-events: all;
+    opacity: 1;
+    transform: translateX(-50%);
+}
+
+.dialog {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 50;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.25s ease-in;
+}
+
+body.stats-on .dialog--stats {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.dialog__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: -1;
+}
+
+.dialog__inner {
+    width: 40rem;
+    border: 1px solid var(--text-alpha3);
+    padding: 2rem 3rem 3rem;
+    backdrop-filter: blur(5px);
+    border-radius: 10px;
+    box-shadow: 0px 1px 20px 2px var(--box-shadow2);
+    background-image: radial-gradient(var(--box-shadow2), rgba(255, 255, 255, 0));
+    background-position: -50% 0;
+    background-size: 200%;
+}
+
+.dialog__inner > h1 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--text-color3);
+    text-transform: capitalize;
+}
+
+.dialog__close {
+    position: absolute;
+    top: 1.6rem;
+    right: 2.2rem;
+    font-size: 2rem;
+    user-select: none;
+    color: var(--text-color2);
+    cursor: pointer;
+}
+
+.stats__line {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.stats__line > * {
+    width: 50%;
+    font-size: 1.3rem;
+    line-height: 1.6;
+}
